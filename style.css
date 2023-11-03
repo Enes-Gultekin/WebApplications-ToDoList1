@@ -1,0 +1,36 @@
+.bc {
+  display: none;
+  display: flex;
+  position: absolute;
+  margin-top: -30px;
+  margin-left: 500px;
+}
+.cr_list {
+  position: relative;
+  top: 100%;
+  padding: 2px;
+  width: 400px;
+  height: auto;
+  overflow: auto;
+}
+
+.container {
+  position: relative;
+  display: absolute;
+}
+
+#star_field {
+  background-color: ;
+  fill: black;
+  left: 100%;
+  width: auto;
+  display: flex;
+}
+
+star_field.toggled {
+  fill: yellow;
+}
+
+.clone_star.star_field {
+  fill: yellow;
+}
