@@ -16,21 +16,8 @@
 
 .container {
   position: relative;
-  display: absolute;
-}
-
-#star_field {
-  background-color: ;
-  fill: black;
-  left: 100%;
-  width: auto;
   display: flex;
-}
-
-star_field.toggled {
-  fill: yellow;
-}
-
-.clone_star.star_field {
-  fill: yellow;
+  border-radius: 12px;
+  border-color: black;
+  border-style: double;
 }

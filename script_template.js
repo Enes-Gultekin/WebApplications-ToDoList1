@@ -3,11 +3,11 @@ const value_list = document.getElementById("add_list");
 const submit_button = document.getElementById("submit_button");
 const delete_button = document.getElementById("delete");
 const new_text_box = document.getElementById("new_block");
-const star = document.getElementById("reference_star");
 
 let todo_map = new Map();
 let keyCounter = 1;
 submit_button.addEventListener("click", create_div);
+// Add this code to your existing code
 
 function create_div() {
   let container = document.createElement("div");
@@ -17,12 +17,10 @@ function create_div() {
   create_elements(container);
   new_text_box.appendChild(container);
   list_box.value = "";
+  saveToLocalStorage();
   return container;
 }
 function create_elements(container) {
-  const clone_star = star.cloneNode(true);
-  clone_star.style.display = "block";
-
   const list = document.createElement("li");
   list.classList.add("cr_list");
 
@@ -41,7 +39,6 @@ function create_elements(container) {
   update_button.textContent = "Update";
   color_button.textContent = "Change Color";
 
-  container.appendChild(clone_star);
   list.textContent = list_box.value;
   container.appendChild(list);
 
@@ -119,13 +116,7 @@ function create_elements(container) {
       console.log(todo_map);
     });
   });
-  clone_star.addEventListener("click", () => {
-    const star_button = document.getElementById("star_field");
-
-    star_button.classList.toggle("toggled");
-  });
 }
-
 function mapping(todo_map, searchvalue) {
   for (let [key, value] of todo_map.entries()) {
     if (value === searchvalue) return key;
@@ -143,3 +134,18 @@ function mouseleft(button_container) {
 function change_back_color(color_button) {
   color_button.replaceWith(color_button);
 }
+function saveToLocalStorage() {
+  const items = Array.from(new_text_box.querySelectorAll(".cr_list")).map(
+    (item) => item.textContent
+  );
+  localStorage.setItem("todoList", JSON.stringify(items));
+}
+window.addEventListener("load", () => {
+  if (localStorage.getItem("todoList")) {
+    const savedList = JSON.parse(localStorage.getItem("todoList"));
+    for (let item of savedList) {
+      const container = create_div();
+      container.querySelector("li").textContent = item;
+    }
+  }
+});
