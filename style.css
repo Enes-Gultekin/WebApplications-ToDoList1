@@ -17,7 +17,23 @@
 .container {
   position: relative;
   display: flex;
-  border-radius: 12px;
-  border-color: black;
-  border-style: double;
+  width: auto;
+}
+#header_main {
+  background-color: lightgrey;
+  color: blue;
+  text-transform: capitalize;
+  width: calc(101px-200px);
+  height: auto;
+  background: radial-gradient(circle, red, blue);
+  margin-top: 10px;
+
+  flex-grow: 1;
+  flex-basis: 2;
+  position: relative;
+  text-align: center;
+}
+
+body {
+  background: linear-gradient(to right, white, black);
 }
